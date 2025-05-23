@@ -19,10 +19,8 @@
             (4, 5, CellType.Wall),
             (5, 5, CellType.Wall),
 
-
             (6, 6, CellType.SmartEnemy),
             (0, 7, CellType.Enemy),
-
 
             (5, 2, CellType.Food),
             (8, 8, CellType.Exit)
