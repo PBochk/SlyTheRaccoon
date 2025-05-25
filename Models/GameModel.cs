@@ -19,6 +19,16 @@ namespace SlyTheRaccoon.Models
             FindEntitiesPosition();
         }
 
+        public void Reset()
+        {
+            CurrentLevel = null;
+            PlayerX = 0;
+            PlayerY = 0;
+            HasFood = false;
+
+            Enemies.Clear();
+        }
+
         private void FindEntitiesPosition()
         {
             Enemies.Clear();
@@ -26,32 +36,34 @@ namespace SlyTheRaccoon.Models
             {
                 for (int x = 0; x < CurrentLevel.Width; x++)
                 {
-                    if (CurrentLevel.Grid[x, y] == CellType.Player)
+                    switch (CurrentLevel.Grid[x, y])
                     {
-                        PlayerX = x;
-                        PlayerY = y;
-                    }
-                    else if (CurrentLevel.Grid[x, y] == CellType.Enemy)
-                    {
-                        Enemies.Add(new Enemy(x, y));
-                    }
-                    else if (CurrentLevel.Grid[x, y] == CellType.SmartEnemy)
-                    {
-                        Enemies.Add(new Enemy(x, y, isSmart: true));
-                    }
-                    else if (CurrentLevel.Grid[x, y] == CellType.FastEnemy)
-                    {
-                        Enemies.Add(new Enemy(x, y, isFast: true));
+                        case CellType.Player:
+                            PlayerX = x;
+                            PlayerY = y;
+                            break;
+
+                        case CellType.Enemy:
+                            Enemies.Add(new Enemy(x, y));
+                            break;
+
+                        case CellType.SmartEnemy:
+                            Enemies.Add(new Enemy(x, y, isSmart: true));
+                            break;
+
+                        case CellType.FastEnemy:
+                            Enemies.Add(new Enemy(x, y, isFast: true));
+                            break;
                     }
 
                 }
             }
         }
 
-        public bool CanMoveTo(int x, int y)
-        {
-            return x >= 0 && x < CurrentLevel.Width &&
-                   y >= 0 && y < CurrentLevel.Height;
-        }
+        //public bool CanMoveTo(int x, int y)
+        //{
+        //    return x >= 0 && x < CurrentLevel.Width &&
+        //           y >= 0 && y < CurrentLevel.Height;
+        //}
     }
 }

@@ -1,8 +1,11 @@
 ﻿<Window x:Class="SlyTheRaccoon.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Game" SizeToContent="WidthAndHeight"
-        ResizeMode="NoResize" Focusable="True">
+        Title="Sly The Raccoon" 
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" 
+        Focusable="True">
 
     <Grid Background="LightGray">
         <ItemsControl ItemsSource="{Binding Cells}">

@@ -28,18 +28,18 @@ namespace SlyTheRaccoon.Models
             return x >= 0 && x < Width && y >= 0 && y < Height;
         }
 
-        public bool IsWalkable(int x, int y)
-        {
-            return IsValidPosition(x, y) && Grid[x, y] != CellType.Wall;
-        }
+        //public bool IsWalkable(int x, int y)
+        //{
+        //    return IsValidPosition(x, y) && Grid[x, y] != CellType.Wall;
+        //}
 
-        public (int x, int y)? FindFirst(CellType type)
-        {
-            for (int y = 0; y < Height; y++)
-                for (int x = 0; x < Width; x++)
-                    if (Grid[x, y] == type)
-                        return (x, y);
-            return null;
-        }
+        //public (int x, int y)? FindFirst(CellType type)
+        //{
+        //    for (int y = 0; y < Height; y++)
+        //        for (int x = 0; x < Width; x++)
+        //            if (Grid[x, y] == type)
+        //                return (x, y);
+        //    return null;
+        //}
     }
 }

@@ -62,6 +62,9 @@
     <Compile Include="Models\GameLevels.cs" />
     <Compile Include="Models\Level.cs" />
     <Compile Include="Models\LevelBuilder.cs" />
+    <Compile Include="Models\Services\EnemyMovementService.cs" />
+    <Compile Include="Models\Services\MovementService.cs" />
+    <Compile Include="Models\Services\PlayerMovementService.cs" />
     <Compile Include="ViewModels\CellViewModel.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
@@ -109,10 +112,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\enemy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\player.png" />
+    <Resource Include="Assets\fastEnemy.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\wall.png" />
@@ -124,11 +124,16 @@
     <Resource Include="Assets\empty.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\smartEnemy.png" />
+    <Resource Include="Assets\enemy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\player.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\food.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\smartEnemy.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

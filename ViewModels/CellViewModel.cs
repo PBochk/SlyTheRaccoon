@@ -49,7 +49,7 @@ namespace SlyTheRaccoon.ViewModels
                     break;
                                     
                 case CellType.FastEnemy:
-                    Sprite = LoadSprite("enemy.png");
+                    Sprite = LoadSprite("fastEnemy.png");
                     break;
 
                 case CellType.Food:

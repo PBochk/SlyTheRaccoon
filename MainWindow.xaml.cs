@@ -1,4 +1,5 @@
 ﻿using SlyTheRaccoon.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -11,12 +12,30 @@ namespace SlyTheRaccoon.Views
             InitializeComponent();
             DataContext = new GameViewModel();
 
-            // Убедимся, что окно получает фокус
+            this.LocationChanged += MainWindow_LocationChanged;
+
             Loaded += (sender, e) =>
             {
                 Focus();
                 Keyboard.Focus(this);
             };
+        }
+
+        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        {
+            var screen = SystemParameters.WorkArea;
+
+            if (Left < screen.Left)
+                Left = screen.Left;
+
+            else if (Left + ActualWidth > screen.Right)
+                Left = screen.Right - ActualWidth;
+
+            if (Top < screen.Top)
+                Top = screen.Top;
+
+            else if (Top + ActualHeight > screen.Bottom)
+                Top = screen.Bottom - ActualHeight;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -26,7 +45,7 @@ namespace SlyTheRaccoon.Views
             if (DataContext is GameViewModel vm)
             {
                 vm.MoveCommand.Execute(e.Key);
-                e.Handled = true; // Важно!
+                e.Handled = true;
             }
         }
     }
