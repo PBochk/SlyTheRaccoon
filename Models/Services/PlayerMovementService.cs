@@ -13,6 +13,9 @@ namespace SlyTheRaccoon.Models.Services
             _model = model;
         }
 
+        /// <summary>
+        /// Возвращает возможность игрока перейти на клетку
+        /// </summary>
         public bool TryMovePlayer(Key key, out int newX, out int newY)
         {
             var (dx, dy) = MovementService.GetDirection(key);
@@ -23,6 +26,9 @@ namespace SlyTheRaccoon.Models.Services
                 && !(_model.CurrentLevel.Grid[newX, newY] == CellType.Exit && !_model.HasFood);
         }
 
+        /// <summary>
+        /// Передвигает игрока на клетку
+        /// </summary>
         public void MovePlayer(int newX, int newY)
         {
             _model.CurrentLevel.Grid[_model.PlayerX, _model.PlayerY] = CellType.Empty;
@@ -31,11 +37,17 @@ namespace SlyTheRaccoon.Models.Services
             _model.PlayerY = newY;
         }
 
+        /// <summary>
+        /// Возвращает наличие еды на клетке
+        /// </summary>
         public bool CanCollectFood(int x, int y)
         {
             return _model.CurrentLevel.Grid[x, y] == CellType.Food;
         }
 
+        /// <summary>
+        /// Возвращает возможность покинуть уровень
+        /// </summary>
         public bool CanExit(int x, int y)
         {
             return _model.CurrentLevel.Grid[x, y] == CellType.Exit && _model.HasFood;

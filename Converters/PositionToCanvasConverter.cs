@@ -7,6 +7,9 @@ namespace SlyTheRaccoon.Converters
 {
     public class PositionToCanvasConverter : IValueConverter
     {
+        /// <summary>
+        /// Перевод из координат сетки в координаты на экране 
+        /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is int pos)

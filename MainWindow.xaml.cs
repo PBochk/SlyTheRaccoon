@@ -21,6 +21,9 @@ namespace SlyTheRaccoon.Views
             };
         }
 
+        /// <summary>
+        /// Не позволяет окну выйти за границы экрана
+        /// </summary>
         private void MainWindow_LocationChanged(object sender, EventArgs e)
         {
             var screen = SystemParameters.WorkArea;
@@ -38,6 +41,9 @@ namespace SlyTheRaccoon.Views
                 Top = screen.Bottom - ActualHeight;
         }
 
+        /// <summary>
+        /// Обработка нажатий на кнопки
+        /// </summary>
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);

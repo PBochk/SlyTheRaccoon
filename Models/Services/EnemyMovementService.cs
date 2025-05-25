@@ -1,7 +1,4 @@
-﻿using SlyTheRaccoon.Models;
-using System.Collections.Generic;
-
-namespace SlyTheRaccoon.Models.Services
+﻿namespace SlyTheRaccoon.Models.Services
 {
     public class EnemyMovementService
     {
@@ -12,6 +9,9 @@ namespace SlyTheRaccoon.Models.Services
             _model = model;
         }
 
+        /// <summary>
+        /// Двигает всех врагов, которые засекли игрока
+        /// </summary>
         public void MoveEnemies()
         {
             for (int i = _model.Enemies.Count - 1; i >= 0; i--)
@@ -31,8 +31,10 @@ namespace SlyTheRaccoon.Models.Services
                 int steps = enemy.IsFast ? 2 : 1;
                 for (int j = 0; j < steps; j++)
                 {
-                    if (enemy.HasDetectedPlayer || (!enemy.IsSmart && canSeePlayer) ||
-                        (enemy.X != enemy.StartX || enemy.Y != enemy.StartY))
+                    if (enemy.HasDetectedPlayer 
+                        || canSeePlayer 
+                        || enemy.X != enemy.StartX 
+                        || enemy.Y != enemy.StartY)
                     {
                         MoveEnemyOnce(enemy);
                     }
@@ -40,6 +42,9 @@ namespace SlyTheRaccoon.Models.Services
             }
         }
 
+        /// <summary>
+        /// Один раз двигает врага в зависимости от условий
+        /// </summary>
         private void MoveEnemyOnce(Enemy enemy)
         {
             if (ShouldChasePlayer(enemy))
@@ -52,6 +57,9 @@ namespace SlyTheRaccoon.Models.Services
             }
         }
 
+        /// <summary>
+        /// Нужно ли врагу преследовать игрока
+        /// </summary>
         private bool ShouldChasePlayer(Enemy enemy)
         {
             bool canSeePlayer = MovementService.HasLineOfSight(
@@ -62,11 +70,17 @@ namespace SlyTheRaccoon.Models.Services
             return enemy.HasDetectedPlayer || canSeePlayer;
         }
 
+        /// <summary>
+        /// Нужно ли врагу возвращаться на исходную позицию
+        /// </summary>
         private bool ShouldReturnToStart(Enemy enemy)
         {
             return enemy.X != enemy.StartX || enemy.Y != enemy.StartY;
         }
 
+        /// <summary>
+        /// Определение способа преследования
+        /// </summary>
         private void ChasePlayer(Enemy enemy)
         {
             if (enemy.IsSmart)
@@ -79,6 +93,9 @@ namespace SlyTheRaccoon.Models.Services
             }
         }
 
+        /// <summary>
+        /// Преследование с поиском пути
+        /// </summary>
         private void ChasePlayerSmart(Enemy enemy)
         {
             var path = MovementService.FindPath(
@@ -94,6 +111,9 @@ namespace SlyTheRaccoon.Models.Services
             }
         }
 
+        /// <summary>
+        /// Преследование по прямой
+        /// </summary>
         private void ChasePlayerSimple(Enemy enemy)
         {
             var (dx, dy) = MovementService.GetDirectionTowardsTarget(
@@ -103,6 +123,9 @@ namespace SlyTheRaccoon.Models.Services
             TryMoveEnemyInDirection(enemy, dx, dy);
         }
 
+        /// <summary>
+        /// Возврат врага на исходную позицию
+        /// </summary>
         private void ReturnToStartPosition(Enemy enemy)
         {
             var (dx, dy) = MovementService.GetDirectionTowardsTarget(
@@ -112,6 +135,9 @@ namespace SlyTheRaccoon.Models.Services
             TryMoveEnemyInDirection(enemy, dx, dy);
         }
 
+        /// <summary>
+        /// Определение направления движения врага
+        /// </summary>
         private void TryMoveEnemyInDirection(Enemy enemy, int dx, int dy)
         {
             if (dx != 0 && MovementService.CanMoveTo(_model.CurrentLevel, enemy.X + dx, enemy.Y))
@@ -124,6 +150,9 @@ namespace SlyTheRaccoon.Models.Services
             }
         }
 
+        /// <summary>
+        /// Обновление сетки после движения врага
+        /// </summary>
         private void MoveEnemyTo(Enemy enemy, int newX, int newY)
         {
             if (newX == _model.PlayerX && newY == _model.PlayerY) return;
@@ -131,9 +160,9 @@ namespace SlyTheRaccoon.Models.Services
             if (_model.CurrentLevel.Grid[newX, newY] == CellType.Empty)
             {
                 _model.CurrentLevel.Grid[enemy.X, enemy.Y] = CellType.Empty;
-                _model.CurrentLevel.Grid[newX, newY] = enemy.IsSmart ? CellType.SmartEnemy :
-                                                     enemy.IsFast ? CellType.FastEnemy :
-                                                     CellType.Enemy;
+                _model.CurrentLevel.Grid[newX, newY] = enemy.IsSmart ? CellType.SmartEnemy 
+                                                        : enemy.IsFast ? CellType.FastEnemy 
+                                                        : CellType.Enemy;
                 enemy.X = newX;
                 enemy.Y = newY;
             }

@@ -47,11 +47,9 @@ namespace SlyTheRaccoon.ViewModels
                 case CellType.SmartEnemy:
                     Sprite = LoadSprite("smartEnemy.png");
                     break;
-                                    
                 case CellType.FastEnemy:
                     Sprite = LoadSprite("fastEnemy.png");
                     break;
-
                 case CellType.Food:
                     Sprite = LoadSprite("food.png");
                     break;

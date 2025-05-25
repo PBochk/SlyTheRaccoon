@@ -21,7 +21,7 @@
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="0.5">
                         <Image Source="{Binding Sprite}" 
-                               Width="100" Height="100"
+                               Width="80" Height="80"
                                Stretch="UniformToFill"/>
                     </Border>
                 </DataTemplate>

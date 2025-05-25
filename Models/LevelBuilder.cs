@@ -2,6 +2,9 @@
 {
     public static class LevelBuilder
     {
+        /// <summary>
+        /// Размещает все объекты на уровне
+        /// </summary>
         public static Level BuildLevel(int width, int height, params (int x, int y, CellType type)[] objects)
         {
             var level = new Level(width, height);

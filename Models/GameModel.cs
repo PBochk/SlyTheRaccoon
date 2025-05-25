@@ -5,7 +5,7 @@ namespace SlyTheRaccoon.Models
 {
     public class GameModel
     {
-        public const int CellSize = 100;
+        public const int CellSize = 80;
         public int PlayerX { get; set; }
         public int PlayerY { get; set; }
         public Level CurrentLevel { get; private set; }
@@ -19,16 +19,9 @@ namespace SlyTheRaccoon.Models
             FindEntitiesPosition();
         }
 
-        public void Reset()
-        {
-            CurrentLevel = null;
-            PlayerX = 0;
-            PlayerY = 0;
-            HasFood = false;
-
-            Enemies.Clear();
-        }
-
+        /// <summary>
+        /// Добавляет координаты мгрока и врагов в модель
+        /// </summary>
         private void FindEntitiesPosition()
         {
             Enemies.Clear();
@@ -59,11 +52,5 @@ namespace SlyTheRaccoon.Models
                 }
             }
         }
-
-        //public bool CanMoveTo(int x, int y)
-        //{
-        //    return x >= 0 && x < CurrentLevel.Width &&
-        //           y >= 0 && y < CurrentLevel.Height;
-        //}
     }
 }

@@ -2,7 +2,6 @@
 {
     public static class GameLevels
     {
-
         // Старт
         public static Level Level1 => LevelBuilder.BuildLevel(10, 10,
             (0, 5, CellType.Player),
@@ -37,7 +36,7 @@
             (9, 6, CellType.Wall)
         );
 
-        // Мелочь
+        // Маленькие враги
         public static Level Level2 => LevelBuilder.BuildLevel(10, 10,
             (1, 3, CellType.Player),
             (9, 6, CellType.Food),
@@ -76,7 +75,7 @@
             (5, 7, CellType.Wall)
         );
 
-        // Большие появились
+        // Появление быстрых врагов
         public static Level Level3 => LevelBuilder.BuildLevel(10, 10,
             (4, 7, CellType.Player),
             (8, 3, CellType.Food),
@@ -108,7 +107,6 @@
             (5, 9, CellType.Wall),
             (6, 2, CellType.Wall),
 
-
             (6, 7, CellType.Wall),
             (7, 7, CellType.Wall),
             (8, 7, CellType.Wall),
@@ -118,8 +116,6 @@
             (7, 9, CellType.Wall),
             (8, 9, CellType.Wall),
             (9, 9, CellType.Wall),
-
-
 
             (0, 6, CellType.Wall)
         );
@@ -135,7 +131,6 @@
             (8, 9, CellType.FastEnemy),
             (1, 1, CellType.FastEnemy),
             (9, 6, CellType.Enemy),
-
 
             (1, 0, CellType.Wall),
             (2, 0, CellType.Wall),
@@ -165,12 +160,11 @@
             (2, 8, CellType.Wall),
             (3, 8, CellType.Wall),
 
-
             (0, 0, CellType.Wall)
         );
 
 
-        // Большая спираль
+        // Большая спираль - появление умного врага
         public static Level Level5 => LevelBuilder.BuildLevel(10, 10,
             (8, 8, CellType.Player),
 
@@ -185,6 +179,7 @@
             (1, 2, CellType.Wall),
             (1, 3, CellType.Wall),
             (1, 4, CellType.Wall),
+            (1, 5, CellType.Wall),
             (1, 6, CellType.Wall),
             (1, 7, CellType.Wall),
             (1, 8, CellType.Wall),
@@ -216,7 +211,6 @@
             (6, 6, CellType.Wall),
             (7, 6, CellType.Wall),
 
-
             (2, 8, CellType.Wall),
             (3, 8, CellType.Wall),
             (4, 8, CellType.Wall),
@@ -228,8 +222,8 @@
             (0, 0, CellType.Wall)
         );
 
-        //1 быстрый 1 умный спираль
-        public static Level Level6 => LevelBuilder.BuildLevel(9, 9,
+        // Roundabout
+        public static Level Level6 => LevelBuilder.BuildLevel(10, 10,
             (0, 0, CellType.Player),
             (0, 1, CellType.Wall),
             (1, 1, CellType.Wall),
@@ -269,7 +263,6 @@
             (7, 9, CellType.FastEnemy),
             (8, 0, CellType.FastEnemy),
 
-
             (1, 2, CellType.Wall),
             (1, 3, CellType.Wall),
             (1, 4, CellType.Wall),
@@ -289,11 +282,7 @@
             (5, 7, CellType.Wall),
 
             (5, 0, CellType.Wall)
-
         );
-
-
-
 
         //Погоня
         public static Level Level8 => LevelBuilder.BuildLevel(10, 10,
@@ -320,7 +309,6 @@
             (6, 3, CellType.Wall),
             (7, 3, CellType.Wall),
 
-
             (2, 4, CellType.Wall),
             (6, 4, CellType.Wall),
 
@@ -333,7 +321,6 @@
             (5, 6, CellType.Wall),
             (6, 6, CellType.Wall),
 
-
             (5, 7, CellType.Wall),
             (6, 7, CellType.Wall),
             (7, 7, CellType.Wall),
@@ -342,7 +329,53 @@
             (2, 8, CellType.Wall),
             (3, 8, CellType.Wall),
             (7, 8, CellType.Wall)
+        );
 
+        //Последний уровень
+        public static Level Level9 => LevelBuilder.BuildLevel(10, 10,
+            (3, 6, CellType.Player),
+
+            (1, 1, CellType.Food),
+
+            (9, 9, CellType.Exit),
+
+            (0, 4, CellType.Enemy),
+            (0, 9, CellType.Enemy),
+            (9, 7, CellType.Enemy),
+            (0, 8, CellType.FastEnemy),
+            (1, 7, CellType.FastEnemy),
+            (9, 1, CellType.FastEnemy),
+            (7, 4, CellType.FastEnemy),
+            (9, 0, CellType.SmartEnemy),
+
+            (0, 2, CellType.SmartEnemy),
+
+            (0, 2, CellType.Wall),
+
+            (2, 1, CellType.Wall),
+            (2, 3, CellType.Wall),
+            (2, 5, CellType.Wall),
+            (2, 6, CellType.Wall),
+            (2, 7, CellType.Wall),
+
+            (4, 2, CellType.Wall),
+            (4, 3, CellType.Wall),
+            (4, 5, CellType.Wall),
+            (4, 6, CellType.Wall),
+
+            (6, 3, CellType.Wall),
+            (7, 3, CellType.Wall),
+            (8, 3, CellType.Wall),
+            (9, 3, CellType.Wall),
+
+            (5, 5, CellType.Wall),
+            (6, 5, CellType.Wall),
+            (7, 5, CellType.Wall),
+            (8, 5, CellType.Wall),
+            (9, 5, CellType.Wall),
+
+            (8, 8, CellType.Wall),
+            (9, 8, CellType.Wall)
         );
     }
 }

@@ -6,9 +6,9 @@
         public int Y { get; set; }
         public int StartX { get; }
         public int StartY { get; }
-        public bool IsSmart { get; } // Определяет тип врага
+        public bool IsSmart { get; }
         public bool IsFast { get; }
-        public bool HasDetectedPlayer { get; set; } // Флаг обнаружения игрока
+        public bool HasDetectedPlayer { get; set; }
 
         public Enemy(int x, int y, bool isSmart = false, bool isFast = false)
         {

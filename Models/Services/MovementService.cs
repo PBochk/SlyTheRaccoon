@@ -44,8 +44,8 @@ namespace SlyTheRaccoon.Models.Services
         /// </summary>
         public static bool IsValidCoordinate(Level level, int x, int y)
         {
-            return x >= 0 && x < level.Width &&
-                   y >= 0 && y < level.Height;
+            return x >= 0 && x < level.Width 
+                    && y >= 0 && y < level.Height;
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace SlyTheRaccoon.Models.Services
         /// </summary>
         public static bool HasLineOfSight(Level level, int fromX, int fromY, int targetX, int targetY)
         {
-            if (!IsValidCoordinate(level, fromX, fromY) ||
-                !IsValidCoordinate(level, targetX, targetY))
+            if (!IsValidCoordinate(level, fromX, fromY) 
+                || !IsValidCoordinate(level, targetX, targetY))
                 return false;
 
             if (fromX != targetX && fromY != targetY)
@@ -86,8 +86,8 @@ namespace SlyTheRaccoon.Models.Services
         public static List<(int x, int y)> FindPath(Level level, int startX, int startY, int targetX, int targetY)
         {
             var grid = level.Grid;
-            if (!IsValidCoordinate(level, startX, startY) ||
-                !IsValidCoordinate(level, targetX, targetY))
+            if (!IsValidCoordinate(level, startX, startY) 
+                || !IsValidCoordinate(level, targetX, targetY))
                 return new List<(int x, int y)>();
 
             if (startX == targetX && startY == targetY)
@@ -122,9 +122,9 @@ namespace SlyTheRaccoon.Models.Services
                         return path;
                     }
 
-                    if (IsValidCoordinate(level, nx, ny) &&
-                        grid[nx, ny] != CellType.Wall &&
-                        !visited.ContainsKey((nx, ny)))
+                    if (IsValidCoordinate(level, nx, ny) 
+                        && grid[nx, ny] != CellType.Wall 
+                        && !visited.ContainsKey((nx, ny)))
                     {
                         visited[(nx, ny)] = current;
                         queue.Enqueue((nx, ny));
